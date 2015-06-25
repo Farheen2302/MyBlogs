@@ -1,0 +1,114 @@
+wordcloud1
+Wooo ! above arrangement of words is enough to blow my mind and I am sure your too,isn't it?
+
+This arrangement is a word cloud.
+
+Lets go to its standard definition.
+
+A word cloud is an image composed of words used in a particular text or subject, in which the size of each word indicates its frequency or importance.
+
+If you are interested to go deep in R and want to learn how ot make word cloud using R then read the post further ,otherwise you can do this much more easily online with Wordle.
+
+Step 1:Install R 
+
+If you don't have R installed the do it by the following link.
+
+r-project.org  and follow download and installation steps.
+
+Step 2:Install RStudio
+
+Rstudio is a graphical interface to R.It provides all tabs and windows: command line, workspace, history, files, plots, packages and help in the same place.So it become quite interesting and easy to work on it.You can install Rstudio from here :rstudio.com
+
+Step 3:Choose a text file
+
+(i)Create a new folder(I named it 'temp') in you default directory.
+
+(ii)Create a new text document(I named it 'far.txt') inside the newly created folder(In my case 'temp') and paste the content of which you want to create 'word cloud'.
+
+Step 4:Install required Packages in R
+
+Open Rstudio and Goto 'Tools' t -> 'Install Packages'
+
+Or
+
+Go to bottom right Window
+
+Packages -> Install
+
+(i)text mining package (‘tm’)
+
+(ii) wordcloud package (‘wordcloud’)
+
+If any of the other package would be required Rstudio will indicate you and then download accordingly all the required packages.
+
+Tick all the required packages or you can include them by typing "library(package name)" in the console.
+
+Step 5:The Data Process: Text mining,clean-up,word cloud
+
+Now we will load our interest text file in Rstudio and then clean it up so that the word cloud make sense;such as removal of words like "the" and other similar words.
+
+We need to load text file in Corpus, so that 'tm' package can process.A corpus is a collection of document.Note that following command loads everything in the specified directory(i.e why we have created new folder 'temp' with one text document 'far.txt').
+
+wordcloud 
+To see whats there in corpus type the below command.
+
+> inspect(wordcloud)
+This should print the content in the screen.
+
+pic
+
+Now we will clean the data according to the requirement.
+
+Look at the following command.Type one command at the time.We have used tm_map function which comes with tm package.
+
+(i) This command removes all the white spaces in the document.
+
+> wordcloud 
+(ii)This command make sure all of your data is in PlainTextDocumen and all your non-standard transformation has been standarised.
+
+> wordcloud 
+(iii)Below command remove English common words like ‘the’ (so-called ‘stopwords’)
+
+> wordcloud 
+(iv)Following command carry out text stemming.
+
+> wordcloud 
+Note:Depending on what you want to achieve you could also explicitly remove numbers and punctuation with the removeNumbers and removePunctuation arguments.
+
+Now comes the magic part!
+
+If all the above process went perfectly fine ,then get ready to see the magic.Type the following command to see your word cloud.
+
+> wordcloud(wordcloud, scale=c(5,0.5), max.words=100, random.order=FALSE, rot.per=0.35, use.r.layout=FALSE, colors=brewer.pal(8, "Dark2"))
+After you run this command you will see similar to below word cloud.
+
+wc
+
+Let me briefly explain some terms of above command and for the detain go
+
+ scale : controls the difference between the largest and smallest font.
+
+max.words: limit the number of words in the cloud.
+
+rot.per : percentage of vertical text.
+
+colors : symbolising your data, from single colors.
+
+If you want to manually remove some of the words type the following command.
+
+> wordcloud 
+and again run wordcloud() command to get the wordcloud.
+
+> wordcloud(wordcloud, scale=c(5,0.5), max.words=100, random.order=FALSE, rot.per=0.35, use.r.layout=FALSE, colors=brewer.pal(8, "Dark2"))
+wc2
+
+Lets limit the number of words to 500.
+
+> wordcloud(wordcloud, scale=c(5,0.5), max.words=500, random.order=FALSE, rot.per=0.35, use.r.layout=FALSE, colors=brewer.pal(8, "Dark2"))
+wc3
+
+Congratulations!
+
+You have learned to create word cloud.
+
+Have fun ! :)
